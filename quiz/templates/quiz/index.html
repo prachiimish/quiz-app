@@ -1,0 +1,46 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Quiz</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Python Quiz</h1>
+        <form method="post">
+            {% csrf_token %}
+            {% for question in questions %}
+            <div class="question-block">
+                <p><strong>{{ question.question }}</strong></p>
+                <ul>
+                    <li>
+                        <label>
+                            <input type="radio" name="choice_{{ question.id }}" value="{{ question.option1 }}">
+                            {{ question.option1 }}
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="choice_{{ question.id }}" value="{{ question.option2 }}">
+                            {{ question.option2 }}
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="choice_{{ question.id }}" value="{{ question.option3 }}">
+                            {{ question.option3 }}
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <input type="radio" name="choice_{{ question.id }}" value="{{ question.option4 }}">
+                            {{ question.option4 }}
+                        </label>
+                    </li>
+                </ul>
+            </div>
+            {% endfor %}
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</body>
